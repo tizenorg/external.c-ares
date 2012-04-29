@@ -1,72 +1,55 @@
+#sbs-git:slp/pkgs/c/c-ares c-ares 1.7.4 a598a0be73d9a97a303887c6e186d067256686eb
 Name:       c-ares
-Summary:    A library that performs asynchronous DNS operations
-Version:    1.7.4
+Summary:    library for asynchronous name resolves (development files)
+Version: 1.7.4
 Release:    1
-Group:      System/Libraries
-License:    MIT
-URL:        http://c-ares.haxx.se/
-Source0:    http://c-ares.haxx.se/c-ares-%{version}.tar.gz
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
+Group:      TO_BE_FILLED
+License:    TO_BE_FILLED
+Source0:    %{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(dlog)
+BuildRequires:  pkgconfig(vconf)
 
+BuildRequires:  cmake
+BuildRequires:  gettext-devel
 
 %description
-c-ares is a C library that performs DNS requests and name resolves 
-asynchronously. c-ares is a fork of the library named 'ares', written 
-by Greg Hudson at MIT.
+library for asynchronous name resolves (development files)
 
 
-
-%package devel
-Summary:    Development files for c-ares
-Group:      Development/Libraries
+%package devel 
+Summary:    library for asynchronous name resolves (development files) (Developement)
+Group:      TO_BE_FILLED 
 Requires:   %{name} = %{version}-%{release}
 
 %description devel
-This package contains the header files and static libraries needed to
-compile applications or shared objects that use c-ares.
-
-
+library for asynchronous name resolves (development files) (Developement)
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-
-%configure --disable-static \
-    --enable-shared \
-    --disable-dependency-tracking
-
+./buildconf
+./configure --prefix=/usr --enable-shared --enable-symbol-hiding
 make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
 %make_install
+%remove_docs
+%post
 
-
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-
-
+%postun
 
 
 %files
 %defattr(-,root,root,-)
-%doc README README.cares
-%{_libdir}/*.so.*
+/usr/lib/libcares.so.2
+/usr/lib/libcares.so.2.0.0
 
-
-%files devel
+%files devel 
 %defattr(-,root,root,-)
-%defattr(-, root, root, 0755)
-%{_includedir}/ares.h
-%{_includedir}/ares_build.h
-%{_includedir}/ares_dns.h
-%{_includedir}/ares_rules.h
-%{_includedir}/ares_version.h
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/libcares.pc
-%doc %{_mandir}/man3/ares_*
+/usr/include/*.h
+/usr/lib/libcares.so
+/usr/lib/pkgconfig/libcares.pc
+
