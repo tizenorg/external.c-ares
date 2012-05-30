@@ -6,6 +6,7 @@ Release:    1
 Group:      TO_BE_FILLED
 License:    TO_BE_FILLED
 Source0:    %{name}-%{version}.tar.gz
+Source1001: packaging/c-ares.manifest 
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dlog)
 BuildRequires:  pkgconfig(vconf)
@@ -29,6 +30,7 @@ library for asynchronous name resolves (development files) (Developement)
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 ./buildconf
 ./configure --prefix=/usr --enable-shared --enable-symbol-hiding
 make %{?jobs:-j%jobs}
@@ -43,11 +45,13 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest c-ares.manifest
 %defattr(-,root,root,-)
 /usr/lib/libcares.so.2
 /usr/lib/libcares.so.2.0.0
 
 %files devel 
+%manifest c-ares.manifest
 %defattr(-,root,root,-)
 /usr/include/*.h
 /usr/lib/libcares.so
