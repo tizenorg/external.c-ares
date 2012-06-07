@@ -1,4 +1,3 @@
-#sbs-git:slp/pkgs/c/c-ares c-ares 1.7.4 a598a0be73d9a97a303887c6e186d067256686eb
 Name:       c-ares
 Summary:    library for asynchronous name resolves (development files)
 Version: 1.7.4
@@ -7,12 +6,6 @@ Group:      TO_BE_FILLED
 License:    TO_BE_FILLED
 Source0:    %{name}-%{version}.tar.gz
 Source1001: packaging/c-ares.manifest 
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(dlog)
-BuildRequires:  pkgconfig(vconf)
-
-BuildRequires:  cmake
-BuildRequires:  gettext-devel
 
 %description
 library for asynchronous name resolves (development files)
@@ -37,8 +30,11 @@ make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
+
 %make_install
+
 %remove_docs
+
 %post
 
 %postun
