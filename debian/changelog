@@ -1,3 +1,11 @@
+c-ares (1.7.4-2) unstable; urgency=low
+
+  * Updated tag value for tizen 2.0 build
+  * Git: external/c-ares
+  * Tag: c-ares_1.7.4-2
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Thu, 23 Aug 2012 13:49:29 +0900
+
 c-ares (1.7.4-1tizen) unstable; urgency=low
 
   * Ported to Tizen for libcurl

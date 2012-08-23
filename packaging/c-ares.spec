@@ -2,7 +2,7 @@
 Name:       c-ares
 Summary:    library for asynchronous name resolves (development files)
 Version: 1.7.4
-Release:    1
+Release:    2
 Group:      TO_BE_FILLED
 License:    TO_BE_FILLED
 Source0:    %{name}-%{version}.tar.gz
