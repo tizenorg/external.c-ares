@@ -6,9 +6,6 @@ Release:    2
 Group:      TO_BE_FILLED
 License:    TO_BE_FILLED
 Source0:    %{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(dlog)
-BuildRequires:  pkgconfig(vconf)
 
 BuildRequires:  cmake
 BuildRequires:  gettext-devel
