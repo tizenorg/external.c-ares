@@ -1,0 +1,47 @@
+Source: c-ares
+Priority: extra
+Maintainer: Andreas Schuldei <andreas@debian.org>, Taeksu Shin <taeksu.shin@samsung.com>, Dongwook Lee <dwmax.lee@samsung.com>
+Uploaders: Taeksu Shin <taeksu.shin@samsung.com>, Dongwook Lee <dwmax.lee@samsung.com>
+DM-Upload-Allowed: yes
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev
+Standards-Version: 3.9.1
+Section: libs
+Vcs-Browser: http://git.debian.org/?p=collab-maint/c-ares.git
+Vcs-Git: git://git.debian.org/git/collab-maint/c-ares.git
+Homepage: http://daniel.haxx.se/projects/c-ares
+
+Package: libc-ares-dev
+Section: libdevel
+Architecture: any
+Conflicts: libares-dev
+Depends: libc-ares2 (= ${binary:Version}),
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: library for asynchronous name resolves (development files)
+ c-ares is a C library that performs DNS requests 
+ and name resolves asynchronously. 
+ .
+ c-ares is a fork of the library named 'ares'
+ .
+ additionally it features 
+  * IPv6 support
+  * Extended cross platform portability
+  * 64bit cleaned sources
+ .
+ This package contains development files (headers and static libraries).
+
+Package: libc-ares2
+Conflicts: libcares2
+Architecture: any
+Replaces: libc-ares1
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: library for asyncronous name resolves
+ c-ares is a C library that performs DNS requests 
+ and name resolves asynchronously. 
+ .
+ c-ares is a fork of the library named 'ares'
+ .
+ additionally it features 
+  * IPv6 support
+  * Extended cross platform portability
+  * 64bit cleaned sources

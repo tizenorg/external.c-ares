@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+#build:
+#	dh $@ --before configure
+#	./waf --nocache configure --prefix=/usr
+#	dh $@ --after configure
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-shared --enable-symbol-hiding
+
