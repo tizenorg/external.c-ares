@@ -40,6 +40,7 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest c-ares.manifest
 %defattr(-,root,root,-)
 /usr/lib/libcares.so.2
 /usr/lib/libcares.so.2.0.0
