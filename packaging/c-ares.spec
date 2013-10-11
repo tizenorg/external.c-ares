@@ -6,10 +6,6 @@ Group:      System/Libraries
 License:    MIT
 Source0:    %{name}-%{version}.tar.gz
 Source1001: c-ares.manifest
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(dlog)
-BuildRequires:  pkgconfig(vconf)
-
 BuildRequires:  cmake
 BuildRequires:  gettext-devel
 
