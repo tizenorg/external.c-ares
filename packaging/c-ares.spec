@@ -12,6 +12,7 @@ BuildRequires:  gettext-devel
 %description
 library for asynchronous name resolves (development files)
 
+
 %package devel 
 Summary:    library for asynchronous name resolves (development files) (Developement)
 Group:      Development/Languages
