@@ -1,5 +1,3 @@
-/* $Id */
-
 /* Copyright 1998 by the Massachusetts Institute of Technology.
  *
  * Permission to use, copy, modify, and distribute this
@@ -22,9 +20,6 @@
 
 #include "ares_setup.h"
 
-#ifdef HAVE_SYS_SOCKET_H
-#  include <sys/socket.h>
-#endif
 #ifdef HAVE_NETINET_IN_H
 #  include <netinet/in.h>
 #endif
@@ -43,8 +38,6 @@
 #  include <arpa/nameser_compat.h>
 #endif
 
-#include <stdlib.h>
-#include <string.h>
 #include "ares.h"
 #include "ares_dns.h"
 #include "ares_private.h"
@@ -105,12 +98,19 @@ int ares_parse_ns_reply( const unsigned char* abuf, int alen,
     if ( aptr + RRFIXEDSZ > abuf + alen )
     {
       status = ARES_EBADRESP;
+      free(rr_name);
       break;
     }
     rr_type = DNS_RR_TYPE( aptr );
     rr_class = DNS_RR_CLASS( aptr );
     rr_len = DNS_RR_LEN( aptr );
     aptr += RRFIXEDSZ;
+    if (aptr + rr_len > abuf + alen)
+      {
+        free(rr_name);
+        status = ARES_EBADRESP;
+        break;
+      }
 
     if ( rr_class == C_IN && rr_type == T_NS )
     {
@@ -119,6 +119,7 @@ int ares_parse_ns_reply( const unsigned char* abuf, int alen,
                                                &len);
       if ( status != ARES_SUCCESS )
       {
+        free(rr_name);
         break;
       }
 

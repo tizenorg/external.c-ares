@@ -9,20 +9,14 @@
 /* when building as static part of libcurl */
 #undef BUILDING_LIBCURL
 
-/* when building c-ares library */
-#undef CARES_BUILDING_LIBRARY
-
-/* when not building a shared library */
-#undef CARES_STATICLIB
-
-/* Define to 1 to enable hiding of library internal symbols. */
-#undef CARES_SYMBOL_HIDING
-
 /* Definition to make a library symbol externally visible. */
 #undef CARES_SYMBOL_SCOPE_EXTERN
 
 /* if a /etc/inet dir is being used */
 #undef ETC_INET
+
+/* Define to the type of arg 2 for gethostname. */
+#undef GETHOSTNAME_TYPE_ARG2
 
 /* Define to the type qualifier of arg 1 for getnameinfo. */
 #undef GETNAMEINFO_QUAL_ARG1
@@ -102,6 +96,9 @@
 /* Define to 1 if the getaddrinfo function is threadsafe. */
 #undef HAVE_GETADDRINFO_THREADSAFE
 
+/* Define to 1 if you have the getenv function. */
+#undef HAVE_GETENV
+
 /* Define to 1 if you have the gethostbyaddr function. */
 #undef HAVE_GETHOSTBYADDR
 
@@ -123,11 +120,8 @@
 /* Define to 1 if you have the `if_indextoname' function. */
 #undef HAVE_IF_INDEXTONAME
 
-/* Define to 1 if you have the `inet_net_pton' function. */
+/* Define to 1 if you have a IPv6 capable working inet_net_pton function. */
 #undef HAVE_INET_NET_PTON
-
-/* Define to 1 if inet_net_pton supports IPv6. */
-#undef HAVE_INET_NET_PTON_IPV6
 
 /* Define to 1 if you have a IPv6 capable working inet_ntop function. */
 #undef HAVE_INET_NTOP
@@ -332,9 +326,6 @@
    */
 #undef LT_OBJDIR
 
-/* Define to 1 if you are building a native Windows target. */
-#undef NATIVE_WINDOWS
-
 /* Define to 1 if you need the malloc.h header file even with stdlib.h */
 #undef NEED_MALLOC_H
 
@@ -376,6 +367,9 @@
 
 /* a suitable file/device to read random data from */
 #undef RANDOM_FILE
+
+/* Define to the type qualifier pointed by arg 5 for recvfrom. */
+#undef RECVFROM_QUAL_ARG5
 
 /* Define to the type of arg 1 for recvfrom. */
 #undef RECVFROM_TYPE_ARG1
@@ -449,6 +443,9 @@
 /* The size of `long', as computed by sizeof. */
 #undef SIZEOF_LONG
 
+/* The size of `short', as computed by sizeof. */
+#undef SIZEOF_SHORT
+
 /* The size of `size_t', as computed by sizeof. */
 #undef SIZEOF_SIZE_T
 
@@ -491,6 +488,11 @@
 /* Define to 1 if OS is AIX. */
 #ifndef _ALL_SOURCE
 #  undef _ALL_SOURCE
+#endif
+
+/* Enable large inode numbers on Mac OS X 10.5.  */
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
 #endif
 
 /* Number of bits in a file offset, on hosts where this is settable. */
