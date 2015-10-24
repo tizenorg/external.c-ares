@@ -1,6 +1,6 @@
 Name:       c-ares
 Summary:    library for asynchronous name resolves (development files)
-Version:    1.10.0_4
+Version:    1.10.0_5
 Release:    1
 Group:      System/Libraries
 License:    MIT
